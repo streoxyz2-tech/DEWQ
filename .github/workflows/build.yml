@@ -1,0 +1,32 @@
+name: Build Geode Mod
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build for Windows
+        uses: geode-sdk/build-geode-mod@main
+        with:
+          sdk: given
+          target: Win64
+          bindings: geode-sdk/bindings
+          bindings-ref: main
+          build-config: Release
+
+      - name: Upload Geode package
+        uses: actions/upload-artifact@v4
+        with:
+          name: predictive-input-buffer-win64
+          path: '**/*.geode'
+          if-no-files-found: error
