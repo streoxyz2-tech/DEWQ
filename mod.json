@@ -1,0 +1,51 @@
+{
+    "geode": "5.9.0",
+    "gd": {
+        "win": "2.2081"
+    },
+    "id": "streo.predictive-input-buffer",
+    "name": "Predictive Input Buffer",
+    "version": "v1.0.0",
+    "developer": "streo",
+    "description": "Buffers early jump presses until the first valid physics tick.",
+    "settings": {
+        "buffer-enabled": {
+            "name": "Enable Predictive Input Buffer",
+            "description": "Hold early jump presses until the first valid tick.",
+            "type": "bool",
+            "default": true
+        },
+        "toggle-keybind": {
+            "name": "Toggle Input Buffer",
+            "description": "Toggle the buffer on or off.",
+            "type": "keybind",
+            "default": "Ctrl+Shift+B",
+            "category": "universal"
+        },
+        "buffer-ticks": {
+            "name": "Buffer Window",
+            "description": "Maximum number of physics ticks an early press may wait.",
+            "type": "int",
+            "default": 4,
+            "min": 2,
+            "max": 16,
+            "control": {
+                "input": true,
+                "slider": true,
+                "arrows": true
+            }
+        },
+        "buffer-releases": {
+            "name": "Buffer Releases",
+            "description": "Preserve release timing while a press is waiting, and defer same-step releases by one tick.",
+            "type": "bool",
+            "default": true
+        },
+        "debug-toasts": {
+            "name": "Debug Toasts",
+            "description": "Show a notification for each buffered, fired, dropped, or passed-through jump.",
+            "type": "bool",
+            "default": false
+        }
+    }
+}
